@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incident Response Platform</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="layout">
+      <section class="toolbar">
+        <div>
+          <p class="eyebrow">Operations Console</p>
+          <h1>Incident Response Platform</h1>
+        </div>
+        <button id="refresh" type="button">Refresh</button>
+      </section>
+
+      <section class="grid">
+        <form id="incident-form" class="panel">
+          <h2>Create Incident</h2>
+          <label>
+            Title
+            <input name="title" value="API latency above SLO" required minlength="4">
+          </label>
+          <label>
+            Service
+            <input name="service_name" value="payments-api" required minlength="2">
+          </label>
+          <label>
+            Severity
+            <select name="severity">
+              <option>SEV1</option>
+              <option>SEV2</option>
+              <option selected>SEV3</option>
+              <option>SEV4</option>
+            </select>
+          </label>
+          <label>
+            Owner
+            <input name="owner" value="platform-team" required minlength="2">
+          </label>
+          <label>
+            Summary
+            <textarea name="summary" required minlength="8">Synthetic monitoring detected high request latency and increased error rates.</textarea>
+          </label>
+          <button type="submit">Open Incident</button>
+          <p id="message" role="status"></p>
+        </form>
+
+        <section class="panel">
+          <div class="list-header">
+            <h2>Active Work</h2>
+            <span id="source"></span>
+          </div>
+          <div id="incidents" class="incident-list"></div>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
