@@ -18,7 +18,7 @@ INCIDENTS_CREATED = Counter("incidents_created_total", "Total incidents created"
 INCIDENTS_RESOLVED = Counter("incidents_resolved_total", "Total incidents resolved")
 OPEN_INCIDENTS = Gauge("open_incidents", "Current open or acknowledged incidents")
 
-app = FastAPI(title=APP_NAME)
+app = FastAPI(title=APP_NAME, root_path="/api")
 cache = redis.Redis.from_url(REDIS_URL, decode_responses=True)
 
 
